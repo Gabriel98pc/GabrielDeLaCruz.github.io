@@ -245,6 +245,10 @@
             font-size: 1.2em;
         }
 
+        .github {
+            background-color: #a78bfa;
+        }
+
         .linkedin {
             background-color: #a78bfa;
         }
@@ -255,27 +259,37 @@
 
         /* Contenedor para las imágenes de tecnología */
         .tech-icons-container {
-            display: grid; /* Cambiamos a CSS Grid para un control más preciso de las filas y columnas */
-            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Permite que los elementos se ajusten, con un mínimo de 60px y expandiéndose */
-            justify-items: center; /* Centra los ítems dentro de sus celdas de la cuadrícula */
+            display: flex; /* Usamos flexbox para una mejor alineación de la última fila */
+            flex-wrap: wrap; /* Permite que los ítems salten a la siguiente línea */
+            justify-content: center; /* Centra los ítems (incluida la última fila incompleta) */
+            align-items: center; /* Centra verticalmente si los ítems tienen diferentes alturas */
             gap: 25px; /* Espacio entre cada imagen */
-            margin-top: 20px; /* Espacio superior, ajusta si es necesario */
-            margin-bottom: 50px; /* Espacio inferior, para separar de los botones de navegación */
-            max-width: 700px; /* Establece un ancho máximo para el contenedor para forzar las filas */
-            margin-left: auto; /* Centra el contenedor en la página */
-            margin-right: auto; /* Centra el contenedor en la página */
+            
+            margin-top: 20px;
+            margin-bottom: 50px;
+            
+            /* Calculamos el ancho máximo para 8 ítems:
+            (Ancho de imagen + 2*padding_interno_imagen + 2*borde_imagen) * 8 + (gap entre items) * 7
+            (60 + 2*2 + 2*3) * 8 + 25 * 7 = (60 + 4 + 6) * 8 + 175 = 70 * 8 + 175 = 560 + 175 = 735px
+            Usaremos un valor ligeramente mayor para holgura. */
+            max-width: 750px; /* Ancho máximo para asegurar 8 items por fila y centrar el bloque */
+            margin-left: auto; /* Centra el contenedor principal */
+            margin-right: auto; /* Centra el contenedor principal */
         }
 
-        /* El estilo de cada imagen individual se mantiene igual */
+        /* Estilo para cada imagen de tecnología */
         .tech-icons-container img {
-            width: 60px; /* Ancho de la imagen, ajusta para cambiar el tamaño */
-            height: 60px; /* Altura de la imagen, debe ser igual al ancho para un círculo perfecto */
+            width: 60px; /* Ancho de la imagen */
+            height: 60px; /* Altura de la imagen (debe ser igual al ancho para un círculo) */
             border-radius: 50%; /* Hace que la imagen sea circular */
             border: 3px solid #a78bfa; /* Borde violeta */
             object-fit: cover; /* Asegura que la imagen cubra todo el círculo sin distorsionarse */
             padding: 2px; /* Pequeño padding interno para que el borde se vea mejor */
             background-color: #222; /* Un fondo sutil si la imagen no es perfectamente cuadrada */
             transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Transiciones suaves */
+            
+            /* Aseguramos que los ítems flexbox no se encojan más de lo deseado */
+            flex-shrink: 0; 
         }
 
         .tech-icons-container img:hover {
@@ -310,6 +324,7 @@
         <img src="images/premiere.png" alt="Adobe Premiere" title="Adobe Premiere">
         <img src="images/windows.png" alt="Windows" title="Windows">
         <img src="images/linux.png" alt="Linux" title="Linux">
+        <img src="images/github.png" alt="Github" title="Github">
     </div>
 
     <nav class="nav-container" id="nav-buttons"></nav>
@@ -546,10 +561,17 @@
 
     <footer>
         <div class="social-links">
+
+            <a href="https://github.com/Gabriel98pc" target="_blank"
+                rel="noopener noreferrer" class="social-button github">
+                <i class="fab fa-github"></i> Github
+            </a>
+
             <a href="https://www.linkedin.com/in/gabriel-de-la-cruz-7b321b149/" target="_blank"
                 rel="noopener noreferrer" class="social-button linkedin">
                 <i class="fab fa-linkedin"></i> LinkedIn
             </a>
+
             <a href="mailto:gdlc1998unity@outlook.com" class="social-button email">
                 <i class="fas fa-envelope"></i> Email
             </a>
