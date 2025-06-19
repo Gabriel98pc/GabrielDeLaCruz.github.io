@@ -255,15 +255,18 @@
 
         /* Contenedor para las imágenes de tecnología */
         .tech-icons-container {
-            display: flex;
-            justify-content: center; /* Centra las imágenes horizontalmente */
-            flex-wrap: wrap; /* Permite que las imágenes salten de línea en pantallas pequeñas */
+            display: grid; /* Cambiamos a CSS Grid para un control más preciso de las filas y columnas */
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Permite que los elementos se ajusten, con un mínimo de 60px y expandiéndose */
+            justify-items: center; /* Centra los ítems dentro de sus celdas de la cuadrícula */
             gap: 25px; /* Espacio entre cada imagen */
             margin-top: 20px; /* Espacio superior, ajusta si es necesario */
             margin-bottom: 50px; /* Espacio inferior, para separar de los botones de navegación */
+            max-width: 700px; /* Establece un ancho máximo para el contenedor para forzar las filas */
+            margin-left: auto; /* Centra el contenedor en la página */
+            margin-right: auto; /* Centra el contenedor en la página */
         }
 
-        /* Estilo para cada imagen de tecnología */
+        /* El estilo de cada imagen individual se mantiene igual */
         .tech-icons-container img {
             width: 60px; /* Ancho de la imagen, ajusta para cambiar el tamaño */
             height: 60px; /* Altura de la imagen, debe ser igual al ancho para un círculo perfecto */
@@ -296,13 +299,15 @@
         <img src="images/blender.png" alt="Blender" title="Blender">
         <img src="images/c_sharp.png" alt="C#" title="C#">
         <img src="images/c_plus_plus.png" alt="C++" title="C++">
-        <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
-        <img src="images/rider.png" alt="Rider" title="Rider">
         <img src="images/php.png" alt="PHP" title="PHP">
         <img src="images/html.png" alt="HTML" title="HTML">
         <img src="images/javascript.png" alt="JavaScript" title="JavaScript">
-        <img src="images/aws.png" alt="Amazon Web Services" title="Amazon Web Services">
         <img src="images/sql.png" alt="SQL" title="SQL">
+        <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
+        <img src="images/rider.png" alt="Rider" title="Rider">
+        <img src="images/aws.png" alt="Amazon Web Services" title="Amazon Web Services">
+        <img src="images/photoshop.png" alt="Adobe Photoshop" title="Adobe Photoshop">
+        <img src="images/premiere.png" alt="Adobe Premiere" title="Adobe Premiere">
         <img src="images/windows.png" alt="Windows" title="Windows">
         <img src="images/linux.png" alt="Linux" title="Linux">
     </div>
