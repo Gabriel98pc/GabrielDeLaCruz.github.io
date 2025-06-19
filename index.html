@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             box-sizing: border-box;
         }
 
-         /* --- ESTILOS DEL TÍTULO PRINCIPAL MODIFICADOS --- */
+        /* --- ESTILOS DEL TÍTULO PRINCIPAL MODIFICADOS --- */
         .main-title {
             color: #a78bfa;
             text-align: center;
@@ -32,34 +33,48 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px; /* Espacio entre el logo y el texto */
+            gap: 20px;
+            /* Espacio entre el logo y el texto */
         }
 
         .page-subtitle {
-            font-size: 1.1rem; /* Un poco más pequeño que el texto normal */
-            color: #a78bfa; /* Un gris claro para no competir con el título */
-            font-weight: 300; /* Una fuente más ligera */
-            font-style: italic; /* Un toque de estilo */
-            margin-top: -5px; /* Reduce el espacio con el título de arriba */
-            margin-bottom: 30px; /* Espacio antes de los botones de navegación */
+            font-size: 1.1rem;
+            /* Un poco más pequeño que el texto normal */
+            color: #a78bfa;
+            /* Un gris claro para no competir con el título */
+            font-weight: 300;
+            /* Una fuente más ligera */
+            font-style: italic;
+            /* Un toque de estilo */
+            margin-top: -5px;
+            /* Reduce el espacio con el título de arriba */
+            margin-bottom: 30px;
+            /* Espacio antes de los botones de navegación */
             text-align: center;
         }
 
         /* --- NUEVO ESTILO PARA EL LOGO CIRCULAR --- */
         .title-logo {
-            width: 60px;  /* Ajusta el tamaño si lo necesitas */
-            height: 60px; /* Ajusta el tamaño si lo necesitas */
-            border-radius: 50%; /* La clave para hacerlo circular */
-            border: 2px solid #a78bfa; /* Un borde a juego con el tema */
-            object-fit: cover; /* Evita que la imagen se deforme */
+            width: 60px;
+            /* Ajusta el tamaño si lo necesitas */
+            height: 60px;
+            /* Ajusta el tamaño si lo necesitas */
+            border-radius: 50%;
+            /* La clave para hacerlo circular */
+            border: 2px solid #a78bfa;
+            /* Un borde a juego con el tema */
+            object-fit: cover;
+            /* Evita que la imagen se deforme */
         }
 
         /* Contenedor para los botones de navegación */
         .nav-container {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Para que los botones se ajusten en pantallas pequeñas */
-            gap: 15px; /* Espacio entre botones */
+            flex-wrap: wrap;
+            /* Para que los botones se ajusten en pantallas pequeñas */
+            gap: 15px;
+            /* Espacio entre botones */
             margin-bottom: 50px;
         }
 
@@ -67,7 +82,8 @@
         .nav-button {
             padding: 10px 20px;
             background-color: #333;
-            color: #d8b4fe; /* Violeta */
+            color: #d8b4fe;
+            /* Violeta */
             text-decoration: none;
             border: 1px solid #a78bfa;
             border-radius: 20px;
@@ -94,13 +110,14 @@
 
         /* Título de cada sección */
         .section-title {
-            color: #d8b4fe; /* Violeta */
+            color: #d8b4fe;
+            /* Violeta */
             font-size: 1.8em;
             padding-bottom: 10px;
             border-bottom: 2px solid #555;
             margin-bottom: 30px;
         }
-        
+
         /* La cuadrícula de GIFs */
         .gif-grid {
             display: grid;
@@ -114,7 +131,7 @@
             color: inherit;
             background-color: #222;
             border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             transition: transform 0.3s ease-in-out;
         }
@@ -124,8 +141,10 @@
         }
 
         .gif-card[href="#"] {
-            cursor: default; /* El cursor no cambia a la manito */
+            cursor: default;
+            /* El cursor no cambia a la manito */
         }
+
         .gif-card img {
             width: 100%;
             height: auto;
@@ -155,9 +174,10 @@
             font-weight: 500;
             text-decoration: none !important;
             margin: 0;
-            padding-right: 10px; /* Espacio para el botón */
+            padding-right: 10px;
+            /* Espacio para el botón */
         }
-        
+
         .toggle-description-btn {
             background: none;
             border: none;
@@ -166,13 +186,13 @@
             cursor: pointer;
             padding: 5px;
         }
-        
+
         .card-description {
             /* Oculto por defecto con una animación suave */
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
-            
+
             color: #ccc;
             font-size: 0.9em;
             text-align: left;
@@ -183,7 +203,8 @@
 
         .card-description.show {
             /* Al mostrarse, se expande a su altura máxima */
-            max-height: 200px; /* Altura máxima que puede alcanzar la descripción */
+            max-height: 200px;
+            /* Altura máxima que puede alcanzar la descripción */
             padding-top: 10px;
             padding-bottom: 15px;
             transition: max-height 0.4s ease-in;
@@ -224,10 +245,43 @@
             font-size: 1.2em;
         }
 
-        .linkedin { background-color: #a78bfa; }
-        .email { background-color: #a78bfa; }
+        .linkedin {
+            background-color: #a78bfa;
+        }
+
+        .email {
+            background-color: #a78bfa;
+        }
+
+        /* Contenedor para las imágenes de tecnología */
+        .tech-icons-container {
+            display: flex;
+            justify-content: center; /* Centra las imágenes horizontalmente */
+            flex-wrap: wrap; /* Permite que las imágenes salten de línea en pantallas pequeñas */
+            gap: 25px; /* Espacio entre cada imagen */
+            margin-top: 20px; /* Espacio superior, ajusta si es necesario */
+            margin-bottom: 50px; /* Espacio inferior, para separar de los botones de navegación */
+        }
+
+        /* Estilo para cada imagen de tecnología */
+        .tech-icons-container img {
+            width: 60px; /* Ancho de la imagen, ajusta para cambiar el tamaño */
+            height: 60px; /* Altura de la imagen, debe ser igual al ancho para un círculo perfecto */
+            border-radius: 50%; /* Hace que la imagen sea circular */
+            border: 3px solid #a78bfa; /* Borde violeta */
+            object-fit: cover; /* Asegura que la imagen cubra todo el círculo sin distorsionarse */
+            padding: 2px; /* Pequeño padding interno para que el borde se vea mejor */
+            background-color: #222; /* Un fondo sutil si la imagen no es perfectamente cuadrada */
+            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Transiciones suaves */
+        }
+
+        .tech-icons-container img:hover {
+            transform: scale(1.1); /* Agranda la imagen ligeramente al pasar el ratón */
+            border-color: #d8b4fe; /* Cambia el color del borde al pasar el ratón */
+        }
     </style>
 </head>
+
 <body>
 
     <h1 class="main-title">
@@ -236,6 +290,22 @@
     </h1>
     <p class="page-subtitle">Full Stack Developer</p>
 
+    <div class="tech-icons-container">
+        <img src="images/unreal_engine.png" alt="Unreal Engine" title="Unreal Engine">
+        <img src="images/unity.png" alt="Unity" title="Unity">
+        <img src="images/blender.png" alt="Blender" title="Blender">
+        <img src="images/c_sharp.png" alt="C#" title="C#">
+        <img src="images/c_plus_plus.png" alt="C++" title="C++">
+        <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
+        <img src="images/rider.png" alt="Rider" title="Rider">
+        <img src="images/php.png" alt="PHP" title="PHP">
+        <img src="images/html.png" alt="HTML" title="HTML">
+        <img src="images/javascript.png" alt="JavaScript" title="JavaScript">
+        <img src="images/aws.png" alt="Amazon Web Services" title="Amazon Web Services">
+        <img src="images/sql.png" alt="SQL" title="SQL">
+        <img src="images/windows.png" alt="Windows" title="Windows">
+        <img src="images/linux.png" alt="Linux" title="Linux">
+    </div>
 
     <nav class="nav-container" id="nav-buttons"></nav>
 
@@ -253,42 +323,42 @@
             {
                 title: 'Participations',
                 gifs: [
-                    { 
+                    {
                         file: 'TwC.jpg',
                         title: 'Those Who Came: Healing Solarus',
                         link: 'https://store.steampowered.com/app/1708570/Those_Who_Came_Healing_Solarus/',
                         description: 'Within this project, I worked as a gameplay programmer and backend programmer, using C++, blueprints and AWS.'
                     },
-                    { 
+                    {
                         file: 'MoV.jpg',
                         title: 'Masks of the Void',
                         link: 'https://store.steampowered.com/app/2542350/Masks_of_the_Void/',
-                        description: 'EWithin this project, I worked as a gameplay programmer and a core systems programmer for the game, such as plugins for the Unreal Engine, using C++ and blueprints.'
+                        description: 'Within this project, I worked as a gameplay programmer and a core systems programmer for the game, such as plugins for the Unreal Engine, using C++ and blueprints.'
                     }
                 ]
             },
             {
                 title: 'Work For Clients',
                 gifs: [
-                    { 
+                    {
                         file: 'Cromata.gif',
-                        title: 'Cromata' ,
+                        title: 'Cromata',
                         link: '#',
                         description: 'This game is a freelance job for a client through discord, basically I develop a basic multiplayer shooter, using c++ and blueprints.'
                     },
-                    { 
+                    {
                         file: 'VRArchitecture.gif',
                         title: 'VR Architecture',
                         link: 'https://gamespad.io/aguascalien3d/',
                         description: 'This was a project for a client, in which they requested a virtual reality tour of a neighborhood under construction, all with the highest possible quality and also multiplayer.'
                     },
-                    { 
+                    {
                         file: 'TextilBJ.jpg',
                         title: 'ERP system for sales',
                         link: '#',
                         description: 'For the client in particular, I developed a completely new ERP system in C# using Visual Studio and Windows Forms. The application manages customer, employee, and sales data, all connected to a database.'
                     },
-                    { 
+                    {
                         file: 'UnityWebglConfigurator.gif',
                         title: 'Unity Webgl Configurator',
                         link: 'https://new.lightboxstudio.es/webgi/Configurator/',
@@ -299,25 +369,25 @@
             {
                 title: 'Personal Projects',
                 gifs: [
-                    { 
+                    {
                         file: 'MagicLand.gif',
                         title: 'Magic Land',
                         link: '#',
                         description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints, with the possibility of multiplayer.'
                     },
-                    { 
+                    {
                         file: 'PunchArena.gif',
                         title: 'Punch Arena',
                         link: 'https://www.youtube.com/watch?v=X7kkFRa1N3A&t=46s',
                         description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints, with the possibility of multiplayer.'
                     },
-                    { 
+                    {
                         file: 'Re4.gif',
                         title: 'Re4 Fan Made',
                         link: 'https://www.youtube.com/watch?v=PcAK_iYa2OY&t=2s',
                         description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
                     },
-                    { 
+                    {
                         file: 'Rick&MortyFanGame.gif',
                         title: 'Rick&Morty Fan Made',
                         link: 'https://www.youtube.com/watch?v=GJvP1yRjIBg',
@@ -328,31 +398,31 @@
             {
                 title: 'First Steps',
                 gifs: [
-                    { 
+                    {
                         file: 'Exo.png',
                         title: 'EXO Training center',
                         link: 'https://www.exotraining.com/es_ar/',
                         description: 'Trained and mentored over 20 members in game development in Unity and Blender.'
                     },
-                    { 
+                    {
                         file: 'GaussSistemas.jpg',
                         title: 'Gauss Sistemas',
                         link: 'https://www.gauss-sistemas.com.ar/',
                         description: 'Built internal tool and software for other companies using C# and SQL.'
                     },
-                    { 
+                    {
                         file: '3Destiny.jpg',
                         title: '3Destiny',
                         link: 'https://3destinyra.com/',
                         description: 'Developer experienced in creating augmented reality solutions using C#, PHP, Unity, and AWS. Skilled in 3D modeling and animation, with a history of team collaboration and mentoring junior developers on organizational best practices.'
                     },
-                    { 
+                    {
                         file: 'Tgl.jpg',
                         title: 'TGL',
                         link: 'https://www.instagram.com/thoseguyslabs/',
                         description: 'Worked programing gameplay features for metaverses developed in Unity Engine.'
                     },
-                    { 
+                    {
                         file: 'IndieFilms.jpg',
                         title: 'Indie Films',
                         link: 'https://www.indie-films.site/',
@@ -389,7 +459,7 @@
             titleElement.classList.add('section-title');
             titleElement.textContent = section.title;
             sectionElement.appendChild(titleElement);
-            
+
             // 4. CREAR LA CUADRÍCULA PARA LOS GIFS DE ESTA SECCIÓN
             const gridElement = document.createElement('div');
             gridElement.classList.add('gif-grid');
@@ -416,12 +486,12 @@
 
                 const titleArea = document.createElement('div');
                 titleArea.classList.add('card-title-area');
-                
+
                 const title = document.createElement('h3');
                 title.textContent = gifData.title;
-                
+
                 titleArea.appendChild(title);
-                
+
                 // --- LÓGICA PARA AÑADIR BOTÓN Y DESCRIPCIÓN ---
                 if (gifData.description) {
                     const button = document.createElement('button');
@@ -429,24 +499,24 @@
                     const icon = document.createElement('i');
                     icon.classList.add('fa-solid', 'fa-plus'); // Icono inicial
                     button.appendChild(icon);
-                    
+
                     const description = document.createElement('p');
                     description.classList.add('card-description');
                     description.textContent = gifData.description;
 
                     button.addEventListener('click', (event) => {
                         // Previene que al hacer clic en el botón, se active el enlace de la tarjeta
-                        event.preventDefault(); 
+                        event.preventDefault();
                         event.stopPropagation();
-                        
+
                         // Muestra/oculta la descripción
                         description.classList.toggle('show');
-                        
+
                         // Cambia el icono del botón
                         icon.classList.toggle('fa-plus');
                         icon.classList.toggle('fa-minus');
                     });
-                    
+
                     titleArea.appendChild(button);
                     card.appendChild(img);
                     card.appendChild(titleArea);
@@ -459,25 +529,29 @@
 
                 gridElement.appendChild(card);
             });
-            
+
             sectionElement.appendChild(gridElement);
             mainContainer.appendChild(sectionElement);
         });
     </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <footer>
         <div class="social-links">
-        <a href="https://www.linkedin.com/in/gabriel-de-la-cruz-7b321b149/" target="_blank" rel="noopener noreferrer" class="social-button linkedin">
-            <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="mailto:gdlc1998unity@outlook.com" class="social-button email">
-            <i class="fas fa-envelope"></i> Email
-        </a>
-    </div>
+            <a href="https://www.linkedin.com/in/gabriel-de-la-cruz-7b321b149/" target="_blank"
+                rel="noopener noreferrer" class="social-button linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:gdlc1998unity@outlook.com" class="social-button email">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+        </div>
         <p>&copy; 2025 Gabriel De la cruz - Portfolio</p>
     </footer>
 
 </body>
+
 </html>
