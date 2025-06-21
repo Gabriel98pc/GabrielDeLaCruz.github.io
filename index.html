@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GABRIEL</title>
     <style>
-        /* Habilita el scroll suave en toda la página */
         html {
             scroll-behavior: smooth;
         }
@@ -24,66 +23,86 @@
             box-sizing: border-box;
         }
 
-        /* --- ESTILOS DEL TÍTULO PRINCIPAL MODIFICADOS --- */
         .main-title {
             color: #a78bfa;
             text-align: center;
             margin-bottom: 20px;
-            /* Nuevos estilos para alinear imagen y texto */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            /* Espacio entre el logo y el texto */
         }
 
         .page-subtitle {
             font-size: 1.1rem;
-            /* Un poco más pequeño que el texto normal */
             color: #a78bfa;
-            /* Un gris claro para no competir con el título */
             font-weight: 300;
-            /* Una fuente más ligera */
             font-style: italic;
-            /* Un toque de estilo */
             margin-top: -5px;
-            /* Reduce el espacio con el título de arriba */
             margin-bottom: 30px;
-            /* Espacio antes de los botones de navegación */
             text-align: center;
         }
 
-        /* --- NUEVO ESTILO PARA EL LOGO CIRCULAR --- */
         .title-logo {
             width: 60px;
-            /* Ajusta el tamaño si lo necesitas */
             height: 60px;
-            /* Ajusta el tamaño si lo necesitas */
             border-radius: 50%;
-            /* La clave para hacerlo circular */
             border: 2px solid #a78bfa;
-            /* Un borde a juego con el tema */
             object-fit: cover;
-            /* Evita que la imagen se deforme */
+            transition: transform 0.3s ease-in-out;
+
         }
 
-        /* Contenedor para los botones de navegación */
+        .title-logo:hover {
+            transform: scale(1.3);
+        }
+
+        .title-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .main-title {
+            margin-bottom: 0;
+        }
+
+        .info-text {
+            position: absolute;
+            right: 100%;
+            margin-right: 20px;
+
+            color: #a78bfa;
+            font-weight: 500;
+            font-size: 1rem;
+            white-space: nowrap;
+
+            opacity: 0;
+            top: 50%;
+            transform: translateY(-30%) translateX(15px);
+
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        .info-text.visible {
+            opacity: 1;
+            transform: translateY(-30%) translateX(0);
+        }
+
         .nav-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            /* Para que los botones se ajusten en pantallas pequeñas */
             gap: 15px;
-            /* Espacio entre botones */
             margin-bottom: 50px;
         }
 
-        /* Estilo de cada botón de navegación */
         .nav-button {
             padding: 10px 20px;
             background-color: #333;
-            color: #d8b4fe;
-            /* Violeta */
+            color: #a78bfa;
             text-decoration: none;
             border: 1px solid #a78bfa;
             border-radius: 20px;
@@ -97,20 +116,17 @@
             transform: translateY(-2px);
         }
 
-        /* Contenedor principal para todas las secciones */
         .portfolio-main-content {
             width: 90%;
             max-width: 1200px;
         }
 
-        /* Estilo para cada sección vertical */
         .portfolio-section {
             margin-bottom: 50px;
         }
 
-        /* Título de cada sección */
         .section-title {
-            color: #d8b4fe;
+            color: #a78bfa;
             /* Violeta */
             font-size: 1.8em;
             padding-bottom: 10px;
@@ -118,11 +134,11 @@
             margin-bottom: 30px;
         }
 
-        /* La cuadrícula de GIFs */
         .gif-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
+            align-items: start;
         }
 
         .gif-card {
@@ -133,16 +149,17 @@
             border-radius: 12px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            transition: transform 0.3s ease-in-out;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
 
         .gif-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            border-color: #a78bfa;
         }
 
         .gif-card[href="#"] {
             cursor: default;
-            /* El cursor no cambia a la manito */
         }
 
         .gif-card img {
@@ -152,8 +169,21 @@
             border-bottom: 2px solid #333;
         }
 
+        .gif-card iframe {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #333;
+        }
+
+        .gif-card iframe {
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-bottom: 2px solid #333;
+        }
+
         .gif-card h3 {
-            color: #d8b4fe;
+            color: #a78bfa;
             margin: 20px 0;
             padding: 0 15px;
             font-size: 1.1em;
@@ -169,13 +199,12 @@
         }
 
         .card-title-area h3 {
-            color: #d8b4fe;
+            color: #a78bfa;
             font-size: 1.1em;
             font-weight: 500;
             text-decoration: none !important;
             margin: 0;
             padding-right: 10px;
-            /* Espacio para el botón */
         }
 
         .toggle-description-btn {
@@ -188,7 +217,6 @@
         }
 
         .card-description {
-            /* Oculto por defecto con una animación suave */
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
@@ -202,12 +230,30 @@
         }
 
         .card-description.show {
-            /* Al mostrarse, se expande a su altura máxima */
-            max-height: 200px;
-            /* Altura máxima que puede alcanzar la descripción */
+            max-height: 300px;
+            overflow-y: auto;
             padding-top: 10px;
             padding-bottom: 15px;
             transition: max-height 0.4s ease-in;
+        }
+
+        .card-description::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .card-description::-webkit-scrollbar-track {
+            background: #222;
+            border-radius: 10px;
+        }
+
+        .card-description::-webkit-scrollbar-thumb {
+            background-color: #a78bfa;
+            border-radius: 10px;
+            border: 2px solid #222;
+        }
+
+        .card-description::-webkit-scrollbar-thumb:hover {
+            background-color: #a78bfa;
         }
 
         footer {
@@ -257,54 +303,80 @@
             background-color: #a78bfa;
         }
 
-        /* Contenedor para las imágenes de tecnología */
         .tech-icons-container {
-            display: flex; /* Usamos flexbox para una mejor alineación de la última fila */
-            flex-wrap: wrap; /* Permite que los ítems salten a la siguiente línea */
-            justify-content: center; /* Centra los ítems (incluida la última fila incompleta) */
-            align-items: center; /* Centra verticalmente si los ítems tienen diferentes alturas */
-            gap: 25px; /* Espacio entre cada imagen */
-            
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
             margin-top: 20px;
             margin-bottom: 50px;
-            
-            /* Calculamos el ancho máximo para 8 ítems:
-            (Ancho de imagen + 2*padding_interno_imagen + 2*borde_imagen) * 8 + (gap entre items) * 7
-            (60 + 2*2 + 2*3) * 8 + 25 * 7 = (60 + 4 + 6) * 8 + 175 = 70 * 8 + 175 = 560 + 175 = 735px
-            Usaremos un valor ligeramente mayor para holgura. */
-            max-width: 750px; /* Ancho máximo para asegurar 8 items por fila y centrar el bloque */
-            margin-left: auto; /* Centra el contenedor principal */
-            margin-right: auto; /* Centra el contenedor principal */
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Estilo para cada imagen de tecnología */
         .tech-icons-container img {
-            width: 60px; /* Ancho de la imagen */
-            height: 60px; /* Altura de la imagen (debe ser igual al ancho para un círculo) */
-            border-radius: 50%; /* Hace que la imagen sea circular */
-            border: 3px solid #a78bfa; /* Borde violeta */
-            object-fit: cover; /* Asegura que la imagen cubra todo el círculo sin distorsionarse */
-            padding: 2px; /* Pequeño padding interno para que el borde se vea mejor */
-            background-color: #222; /* Un fondo sutil si la imagen no es perfectamente cuadrada */
-            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Transiciones suaves */
-            
-            /* Aseguramos que los ítems flexbox no se encojan más de lo deseado */
-            flex-shrink: 0; 
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #a78bfa;
+            object-fit: cover;
+            padding: 2px;
+            background-color: #222;
+            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            flex-shrink: 0;
         }
 
         .tech-icons-container img:hover {
-            transform: scale(1.1); /* Agranda la imagen ligeramente al pasar el ratón */
-            border-color: #d8b4fe; /* Cambia el color del borde al pasar el ratón */
+            transform: scale(1.1);
+            border-color: #a78bfa;
+        }
+
+        .card-description ul {
+            list-style: none;
+            padding-left: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-description li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-description li .fa-solid {
+            color: #a78bfa;
+            margin-top: 4px;
+        }
+
+        .card-description hr {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 15px 0;
+        }
+
+        .card-description .item-label {
+            min-width: 140px;
+            flex-shrink: 0;
+            margin-right: 5px;
         }
     </style>
 </head>
 
 <body>
 
-    <h1 class="main-title">
-        <img src="images/logo.jpg" alt="Mi Logo" class="title-logo">
-        <span>GABRIEL DE LA CRUZ</span>
-    </h1>
+    <div class="title-container">
+        <span id="info-text" class="info-text"></span>
+
+        <h1 class="main-title">
+            <img src="images/logo.jpg" alt="Mi Logo" class="title-logo">
+            <span>GABRIEL DE LA CRUZ</span>
+        </h1>
+    </div>
     <p class="page-subtitle">Full Stack Developer</p>
 
     <div class="tech-icons-container">
@@ -332,28 +404,150 @@
     <main class="portfolio-main-content" id="portfolio-main"></main>
 
     <script>
-        // --- CONFIGURACIÓN DEL SONIDO ---
+
+        const BIRTH_DATE = '1998-12-08';
+        const WORK_START_DATE = '2018-01-01';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const infoTextElement = document.getElementById('info-text');
+            const titleLogo = document.querySelector('.title-logo');
+
+            if (infoTextElement && titleLogo) {
+                const getYearsDifference = (dateString) => {
+                    const today = new Date();
+                    const startDate = new Date(dateString);
+                    let years = today.getFullYear() - startDate.getFullYear();
+                    const m = today.getMonth() - startDate.getMonth();
+                    if (m < 0 || (m === 0 && today.getDate() < startDate.getDate())) {
+                        years--;
+                    }
+                    return years;
+                };
+
+                const age = getYearsDifference(BIRTH_DATE);
+                const experience = getYearsDifference(WORK_START_DATE);
+
+                infoTextElement.textContent = `${age} years old | ${experience}+ years experience`;
+
+                titleLogo.addEventListener('mouseenter', () => {
+                    infoTextElement.classList.add('visible');
+                });
+
+                titleLogo.addEventListener('mouseleave', () => {
+                    infoTextElement.classList.remove('visible');
+                });
+            }
+        });
+
         const hoverSound = new Audio('sounds/hover.wav');
         hoverSound.volume = 0.5;
 
-        // --- CONFIGURACIÓN DE TUS SECCIONES Y GIFS ---
-        // Edita esta lista para organizar tu portafolio.
-        // Cada sección tiene un título y una lista de GIFs.
         const portfolioData = [
             {
                 title: 'Participations',
                 gifs: [
                     {
-                        file: 'TwC.jpg',
-                        title: 'Those Who Came: Healing Solarus',
-                        link: 'https://store.steampowered.com/app/1708570/Those_Who_Came_Healing_Solarus/',
-                        description: 'Within this project, I worked as a gameplay programmer and backend programmer, using C++, blueprints and AWS.'
+                        file: '',
+                        title: 'Masks of the Void',
+                        youtubeId: 'Y_fDYrLAT7E',
+                        link: 'https://store.steampowered.com/app/2542350/Masks_of_the_Void/',
+                        description: `
+                                <p>I participated in this project with the following responsibilities:</p>
+                                <ul>
+                                    <li><i class="fa-solid fa-gamepad"></i> <span class="item-label"><b>Editor:</b></span> <span>Development of core plugins.</span></li>
+                                    <li><i class="fa-solid fa-gamepad"></i> <span class="item-label"><b>Gameplay:</b></span> <span>Development of core player mechanics.</span></li>
+                                    <li><i class="fa-solid fa-gamepad"></i> <span class="item-label"><b>IA:</b></span> <span>Development of core Enemy IAs mechanics.</span></li>
+                                    <li><i class="fa-solid fa-gamepad"></i> <span class="item-label"><b>Assets:</b></span> <span>Implementation of assets like meshes and animations.</span></li>
+                                    <li><i class="fa-solid fa-server"></i> <span class="item-label"><b>API SDK:</b></span> <span>Implementation and maintenance of APIs SDK.</span></li>
+                                    <li><i class="fa-solid fa-cogs"></i> <span class="item-label"><b>Technologies:</b></span> <span>C++, Blueprints.</span></li>
+                                </ul>
+                                <hr>
+                                <em>¡A great experience in a professional development team!</em>
+                            `
                     },
                     {
-                        file: 'MoV.jpg',
-                        title: 'Masks of the Void',
-                        link: 'https://store.steampowered.com/app/2542350/Masks_of_the_Void/',
-                        description: 'Within this project, I worked as a gameplay programmer and a core systems programmer for the game, such as plugins for the Unreal Engine, using C++ and blueprints.'
+                        file: '',
+                        youtubeId: 'GrfNa-PRxLU',
+                        title: 'Those Who Came: Healing Solarus',
+                        link: 'https://store.steampowered.com/app/1708570/Those_Who_Came_Healing_Solarus/',
+                        description: `
+                            <p>I participated in this project with the following responsibilities:</p>
+                            <ul>
+                                <li><i class="fa-solid fa-gamepad"></i><span class="item-label"> <b>Programming:</b></span><span>Development of core player mechanics.</span></li>
+                                <li><i class="fa-solid fa-server"></i><span class="item-label">  <b>Backend: </b></span><span>Implementation and maintenance of cloud services.</span></li>
+                                <li><i class="fa-solid fa-cogs"></i><span class="item-label">    <b>Technologies:    </b></span><span>C++, Blueprints And Amazon Web Services (AWS).</span></li>
+                            </ul>
+                            <hr>
+                            <em>¡A great experience in a professional development team!</em>
+                        `
+                    }
+                ]
+            },
+            {
+                title: 'Personal Projects',
+                gifs: [
+                    {
+                        file: '',
+                        youtubeId: 'JD1cDuqxqj4',
+                        title: 'Tower Defender WIP',
+                        link: '#',
+                        description: `
+        <p>
+            Jump into the fray with <b>Cannon Fury: Siege Breakers</b>, an explosive top-down multiplayer game. 
+            Built from the ground up in <b>Unreal Engine 5</b>, the objective is simple: reduce the enemy fortress to rubble!
+        </p>
+        <ul>
+            <li><i class="fa-solid fa-bullseye"></i><span class="item-label"><b>Tactical Combat:</b></span><span>Aim your cannons, calculate the trajectory, and unleash a barrage of destruction on enemy turrets.</span></li>
+            <li><i class="fa-solid fa-users"></i><span class="item-label"><b>Multiplayer Mayhem:</b></span><span>Coordinate with your team in intense online matches to demolish the rival base before they destroy yours.</span></li>
+            <li><i class="fa-solid fa-trophy"></i><span class="item-label"><b>Victory by Demolition:</b></span><span>Victory is achieved when the last brick of the last enemy turret has fallen.</span></li>
+        </ul>
+        <hr>
+        <p>This personal project is a showcase of advanced technical skills in game development:</p>
+        <ul>
+            <li><i class="fa-brands fa-unreal"></i><span class="item-label"><b>Unreal Engine 5:</b></span><span>Harnessing the engine's power for advanced physics, Niagara particle effects, and high-performance rendering.</span></li>
+            <li><i class="fa-solid fa-code"></i><span class="item-label"><b>C++ & Blueprints:</b></span><span>A robust architecture with core systems built in C++ for maximum performance, and flexible gameplay mechanics implemented with Blueprints.</span></li>
+            <li><i class="fa-solid fa-puzzle-piece"></i><span class="item-label"><b>Modular Plugins:</b></span><span>Creation of custom plugins to manage multiplayer networking logic and reusable weapon systems.</span></li>
+        </ul>
+        <em>A personal project focused on creating a fun, addictive, and technically solid multiplayer experience.</em>
+    `
+                    },
+                    {
+                        file: '',
+                        youtubeId: '3k3AZ1nV1ak',
+                        title: 'Punch Arena',
+                        link: 'https://www.youtube.com/watch?v=X7kkFRa1N3A&t=46s',
+                        description: `
+    <p>
+        This is a personal hobby project, developed to explore and prototype new gameplay ideas within the Unreal Engine ecosystem. I took on a variety of roles, from programming core mechanics to bringing the game world to life visually.
+    </p>
+    <ul>
+        <li><i class="fa-solid fa-palette"></i><span class="item-label"><b>Visual Design:</b></span><span>Conceptualized, designed, and animated both the characters and the game environments.</span></li>
+        <li><i class="fa-solid fa-cubes"></i><span class="item-label"><b>Engine:</b></span><span>Built with Unreal Engine, focusing on rapid prototyping and visual scripting.</span></li>
+        <li><i class="fa-solid fa-code"></i><span class="item-label"><b>Core Tech:</b></span><span>Utilizes a powerful mix of C++ for core systems and Blueprints for fast iteration of game mechanics.</span></li>
+        <li><i class="fa-solid fa-users"></i><span class="item-label"><b>Multiplayer Ready:</b></span><span>Designed from the start with multiplayer capabilities in mind, creating a solid foundation for online experiences.</span></li>
+    </ul>
+    <hr>
+    <em>A creative sandbox for honing development, design, and animation skills while testing new concepts.</em>
+`
+                    },
+                    {
+                        file: 'MagicLand.gif',
+                        title: 'Magic Land',
+                        link: '#',
+                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints, with the possibility of multiplayer.'
+                    },
+                    {
+                        file: '',
+                        youtubeId: 'PcAK_iYa2OY',
+                        title: 'Re4 Fan Made',
+                        link: '#',
+                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
+                    },
+                    {
+                        file: 'Rick&MortyFanGame.gif',
+                        title: 'Rick&Morty Fan Made',
+                        link: 'https://www.youtube.com/watch?v=GJvP1yRjIBg',
+                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
                     }
                 ]
             },
@@ -382,36 +576,7 @@
                         file: 'UnityWebglConfigurator.gif',
                         title: 'Unity Webgl Configurator',
                         link: 'https://new.lightboxstudio.es/webgi/Configurator/',
-                        description: 'This project consists of a web configurator running on WebGL programmed in Unity using C#, ttml, and JavaScript. The web app allows you to configure a piece of furniture by changing aspects such as the materials and parts of the furniture itself.'
-                    }
-                ]
-            },
-            {
-                title: 'Personal Projects',
-                gifs: [
-                    {
-                        file: 'MagicLand.gif',
-                        title: 'Magic Land',
-                        link: '#',
-                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints, with the possibility of multiplayer.'
-                    },
-                    {
-                        file: 'PunchArena.gif',
-                        title: 'Punch Arena',
-                        link: 'https://www.youtube.com/watch?v=X7kkFRa1N3A&t=46s',
-                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints, with the possibility of multiplayer.'
-                    },
-                    {
-                        file: 'Re4.gif',
-                        title: 'Re4 Fan Made',
-                        link: 'https://www.youtube.com/watch?v=PcAK_iYa2OY&t=2s',
-                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
-                    },
-                    {
-                        file: 'Rick&MortyFanGame.gif',
-                        title: 'Rick&Morty Fan Made',
-                        link: 'https://www.youtube.com/watch?v=GJvP1yRjIBg',
-                        description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
+                        description: 'This project consists of a web configurator running on WebGL programmed in Unity using C#, html, and JavaScript. The web app allows you to configure a piece of furniture by changing aspects such as the materials and parts of the furniture itself.'
                     }
                 ]
             },
@@ -451,9 +616,6 @@
                 ]
             }
         ];
-
-        // --- CÓDIGO PARA GENERAR LA PÁGINA DINÁMICAMENTE ---
-        // (No necesitas editar nada debajo de esta línea)
 
         const navContainer = document.getElementById('nav-buttons');
         const mainContainer = document.getElementById('portfolio-main');
@@ -500,9 +662,19 @@
                     //card.addEventListener('mouseout', () => { hoverSound.pause(); });
                 }
 
-                const img = document.createElement('img');
-                img.src = 'gifs/' + gifData.file;
-                img.alt = gifData.title;
+                let mediaElement;
+                if (gifData.youtubeId) {
+                    mediaElement = document.createElement('iframe');
+                    mediaElement.src = `https://www.youtube.com/embed/${gifData.youtubeId}`;
+                    mediaElement.title = gifData.title;
+                    mediaElement.setAttribute('frameborder', '0');
+                    mediaElement.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                    mediaElement.setAttribute('allowfullscreen', '');
+                } else {
+                    mediaElement = document.createElement('img');
+                    mediaElement.src = 'gifs/' + gifData.file;
+                    mediaElement.alt = gifData.title;
+                }
 
                 const titleArea = document.createElement('div');
                 titleArea.classList.add('card-title-area');
@@ -522,28 +694,53 @@
 
                     const description = document.createElement('p');
                     description.classList.add('card-description');
-                    description.textContent = gifData.description;
+                    description.innerHTML = gifData.description;
+
+
+                    // Funciones de ayuda para no repetir código
+                    const openDescription = () => {
+                        description.classList.add('show');
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    };
+
+                    const closeDescription = () => {
+                        description.classList.remove('show');
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    };
+
+                    // Evento para abrir con el hover
+                    card.addEventListener('mouseenter', openDescription);
+
+                    // Evento para cerrar al quitar el hover (si no está fijado)
+                    card.addEventListener('mouseleave', () => {
+                        if (!card.classList.contains('is-pinned')) {
+                            closeDescription();
+                        }
+                    });
 
                     button.addEventListener('click', (event) => {
                         // Previene que al hacer clic en el botón, se active el enlace de la tarjeta
                         event.preventDefault();
                         event.stopPropagation();
 
-                        // Muestra/oculta la descripción
-                        description.classList.toggle('show');
+                        // Alterna el estado 'fijado' en la tarjeta
+                        card.classList.toggle('is-pinned');
 
-                        // Cambia el icono del botón
-                        icon.classList.toggle('fa-plus');
-                        icon.classList.toggle('fa-minus');
+                        // Si acabamos de fijarlo, nos aseguramos de que esté abierto
+                        if (card.classList.contains('is-pinned')) {
+                            openDescription();
+                        }
                     });
 
                     titleArea.appendChild(button);
-                    card.appendChild(img);
+                    card.appendChild(mediaElement);
                     card.appendChild(titleArea);
                     card.appendChild(description);
                 } else {
                     // Si no hay descripción, se mantiene la estructura simple
-                    card.appendChild(img);
+                    card.appendChild(mediaElement);
                     card.appendChild(titleArea);
                 }
 
@@ -553,17 +750,23 @@
             sectionElement.appendChild(gridElement);
             mainContainer.appendChild(sectionElement);
         });
+
+        const contactButton = document.createElement('a');
+        contactButton.classList.add('nav-button');
+        contactButton.href = '#contact';
+        contactButton.textContent = 'Contact';
+        navContainer.appendChild(contactButton);
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <footer>
+    <footer id="contact">
         <div class="social-links">
 
-            <a href="https://github.com/Gabriel98pc" target="_blank"
-                rel="noopener noreferrer" class="social-button github">
+            <a href="https://github.com/Gabriel98pc" target="_blank" rel="noopener noreferrer"
+                class="social-button github">
                 <i class="fab fa-github"></i> Github
             </a>
 
