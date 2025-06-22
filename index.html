@@ -377,7 +377,7 @@
             <span>GABRIEL DE LA CRUZ</span>
         </h1>
     </div>
-    <p class="page-subtitle">Full Stack Developer</p>
+    <p class="page-subtitle">FULL STACK DEVELOPER</p>
 
     <div class="tech-icons-container">
         <img src="images/unreal_engine.png" alt="Unreal Engine" title="Unreal Engine">
@@ -444,7 +444,7 @@
 
         const portfolioData = [
             {
-                title: 'Participations',
+                title: 'CONTRIBUTIONS',
                 gifs: [
                     {
                         file: '',
@@ -484,7 +484,7 @@
                 ]
             },
             {
-                title: 'Personal Projects',
+                title: 'MY PROJECTS',
                 gifs: [
                     {
                         file: '',
@@ -552,7 +552,7 @@
                 ]
             },
             {
-                title: 'Work For Clients',
+                title: 'FREELANCE WORK',
                 gifs: [
                     {
                         file: 'Cromata.gif',
@@ -581,7 +581,7 @@
                 ]
             },
             {
-                title: 'First Steps',
+                title: 'MY FIRST STEPS',
                 gifs: [
                     {
                         file: 'Exo.png',
@@ -649,6 +649,7 @@
             section.gifs.forEach(gifData => {
                 const card = document.createElement('a');
                 card.classList.add('gif-card');
+
                 card.href = gifData.link;
 
                 if (gifData.link && gifData.link !== '#') {
@@ -656,10 +657,16 @@
                     card.rel = 'noopener noreferrer';
                     card.addEventListener('mouseover', () => {
                         hoverSound.currentTime = 0;
-                        //hoverSound.play().catch(error => { if (error.name === "AbortError") return; });
-                        //hoverSound.play();
                     });
-                    //card.addEventListener('mouseout', () => { hoverSound.pause(); });
+                }
+                else 
+                {
+                    card.addEventListener('click', (event) => {
+                        event.preventDefault();
+                    });
+
+                    // Opcional: Quitar el estilo de "enlace" si no hay link
+                    card.style.cursor = 'default'; 
                 }
 
                 let mediaElement;
@@ -754,7 +761,7 @@
         const contactButton = document.createElement('a');
         contactButton.classList.add('nav-button');
         contactButton.href = '#contact';
-        contactButton.textContent = 'Contact';
+        contactButton.textContent = 'CONTACT';
         navContainer.appendChild(contactButton);
     </script>
 
