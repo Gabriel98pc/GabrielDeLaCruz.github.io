@@ -303,17 +303,74 @@
             background-color: #a78bfa;
         }
 
-        .tech-icons-container {
+        /* Nuevo contenedor principal */
+        .tech-categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Cada bloque de categoría */
+        .tech-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Etiqueta de la categoría */
+        .group-label {
+            color: #a78bfa;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        /* Contenedor de los iconos dentro del grupo */
+        .tech-icons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin-top: 20px;
-            margin-bottom: 50px;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 15px;
+        }
+
+        /* Estilo de los iconos (mantenemos tu estética) */
+        .tech-icons img {
+            width: 50px;
+            /* Un poco más pequeños para que el grupo no sea gigante */
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #a78bfa;
+            object-fit: cover;
+            padding: 3px;
+            background-color: #222;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .tech-icons img:hover {
+            transform: scale(1.15);
+        }
+
+        /* Media query para que en desktop los grupos se vean en filas si quieres */
+        @media (min-width: 768px) {
+            .tech-categories {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .tech-group {
+                width: calc(50% - 30px);
+                /* Dos grupos por fila en tablets/laptops */
+            }
         }
 
         .tech-icons-container img {
@@ -379,31 +436,60 @@
     </div>
     <p class="page-subtitle">FULL STACK DEVELOPER</p>
 
-    <div class="tech-icons-container">
-        <img src="images/unreal_engine.png" alt="Unreal Engine" title="Unreal Engine">
-        <img src="images/unity.png" alt="Unity" title="Unity">
-        <img src="images/blender.png" alt="Blender" title="Blender">
-        <img src="images/c_sharp.png" alt="C#" title="C#">
-        <img src="images/c_plus_plus.png" alt="C++" title="C++">
-        <img src="images/php.png" alt="PHP" title="PHP">
-        <img src="images/html.png" alt="HTML" title="HTML">
-        <img src="images/javascript.png" alt="JavaScript" title="JavaScript">
-        <img src="images/sql.png" alt="SQL" title="SQL">
-        <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
-        <img src="images/rider.png" alt="Rider" title="Rider">
-        <img src="images/aws.png" alt="Amazon Web Services" title="Amazon Web Services">
-        <img src="images/photoshop.png" alt="Adobe Photoshop" title="Adobe Photoshop">
-        <img src="images/premiere.png" alt="Adobe Premiere" title="Adobe Premiere">
-        <img src="images/windows.png" alt="Windows" title="Windows">
-        <img src="images/linux.png" alt="Linux" title="Linux">
-        <img src="images/github.png" alt="Github" title="Github">
+    <div class="tech-categories">
+        <div class="tech-group">
+            <span class="group-label">Game Engines</span>
+            <div class="tech-icons">
+                <img src="images/unreal_engine.png" alt="Unreal Engine" title="Unreal Engine">
+                <img src="images/unity.png" alt="Unity" title="Unity">                
+            </div>
+        </div>
+
+        <div class="tech-group">
+            <span class="group-label">Design Tools</span>
+            <div class="tech-icons">                
+                <img src="images/blender.png" alt="Blender" title="Blender">
+                <img src="images/photoshop.png" alt="Adobe Photoshop" title="Adobe Photoshop">
+                <img src="images/premiere.png" alt="Adobe Premiere" title="Adobe Premiere">
+            </div>
+        </div>
+
+        <div class="tech-group">
+            <span class="group-label">Languages & DB</span>
+            <div class="tech-icons">
+                <img src="images/c_sharp.png" alt="C#" title="C#">
+                <img src="images/c_plus_plus.png" alt="C++" title="C++">
+                <img src="images/php.png" alt="PHP" title="PHP">
+                <img src="images/sql.png" alt="SQL" title="SQL">
+                <img src="images/javascript.png" alt="JavaScript" title="JavaScript">
+            </div>
+        </div>
+
+        <div class="tech-group">
+            <span class="group-label">Web & Cloud</span>
+            <div class="tech-icons">
+                <img src="images/html.png" alt="HTML" title="HTML">
+                <img src="images/aws.png" alt="Amazon Web Services" title="Amazon Web Services">
+                <img src="images/github.png" alt="Github" title="Github">
+            </div>
+        </div>
+
+        <div class="tech-group">
+            <span class="group-label">Tools & OS</span>
+            <div class="tech-icons">
+                <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
+                <img src="images/rider.png" alt="Rider" title="Rider">                
+                <img src="images/windows.png" alt="Windows" title="Windows">
+                <img src="images/linux.png" alt="Linux" title="Linux">
+            </div>
+        </div>
     </div>
 
     <nav class="nav-container" id="nav-buttons"></nav>
 
     <main class="portfolio-main-content" id="portfolio-main"></main>
 
-    
+
     <script type="module">
 
         const BIRTH_DATE = '1998-12-08';
@@ -489,14 +575,13 @@
                         hoverSound.currentTime = 0;
                     });
                 }
-                else 
-                {
+                else {
                     card.addEventListener('click', (event) => {
                         event.preventDefault();
                     });
 
                     // Opcional: Quitar el estilo de "enlace" si no hay link
-                    card.style.cursor = 'default'; 
+                    card.style.cursor = 'default';
                 }
 
                 let mediaElement;
