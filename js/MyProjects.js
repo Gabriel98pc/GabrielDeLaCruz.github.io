@@ -3,6 +3,17 @@ export const myprojects = {
     gifs: [
         {
             file: '',
+            youtubeId: 'ctPKC_H4xCU',
+            title: 'Procedural Velociraptor',
+            link: '#',
+            description: `
+                <p>
+                    Procedural velociraptor with animations and IK, combining Anim blueprints with Custom Control Rig.
+                </p>
+            `
+        },
+        {
+            file: '',
             youtubeId: 'JD1cDuqxqj4',
             title: 'Tower Defender WIP',
             link: '#',
