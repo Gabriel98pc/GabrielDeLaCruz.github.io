@@ -3,6 +3,18 @@ export const myprojects = {
     gifs: [
         {
             file: '',
+            youtubeId: 'Q7TQDNI9u_0',
+            title: 'LegalTech Web Control',
+            link: '#',
+            description: `
+                <p>
+                    LegalTech: Comprehensive Legal Management System
+A web platform (CRM/ERP) designed to digitize and optimize the daily workflow of law firms. Created from the dual perspective of software development and legal practice, the application solves administrative chaos by automating critical tasks: from an Emergency Panel for procedural deadlines to a Smart Document Builder that auto-completes legal filings. A solution focused on productivity, case tracking, and financial transparency.
+                </p>
+            `
+        },
+        {
+            file: '',
             youtubeId: 'TVBwAFidKCc',
             title: 'Enterprise Web Control ERP',
             link: '#',
