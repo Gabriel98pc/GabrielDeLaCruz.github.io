@@ -2,6 +2,13 @@ export const freelancework = {
     title: 'FREELANCE WORK',
     gifs: [
         {
+            file: '',
+            youtubeId: 'ddm9G4HBd9Y',
+            title: 'Unreal Engine Developer - Strategy Game',
+            link: '#',
+            description: 'I developed this video game from scratch for a client; its a real-time, multiplayer strategy game where you can build buildings and units to collect resources and attack your enemies.'
+        },
+        {
             file: 'Cromata.gif',
             title: 'Unreal Engine Developer - Cromata',
             link: '#',
