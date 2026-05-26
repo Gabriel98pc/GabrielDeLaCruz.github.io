@@ -1,5 +1,5 @@
 export const myueplugins = {
-    title: 'MY UE PLUGINS',
+    title: 'UNREAL ENGINE PLUGINS',
     gifs: [
     {
         file: 'TickableObjects.jpg',

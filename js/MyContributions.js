@@ -1,5 +1,5 @@
 export const contributions = {
-    title: 'CONTRIBUTIONS',
+    title: 'GAMES PUBLISHED WHERE I WORK',
     gifs: [
         {
             file: '',

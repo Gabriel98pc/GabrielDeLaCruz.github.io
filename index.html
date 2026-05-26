@@ -164,14 +164,19 @@
 
         .gif-card img {
             width: 100%;
-            height: auto;
+            height: 160px;
+            /* Fijamos una altura máxima para la imagen */
+            object-fit: cover;
+            /* Evita que la imagen se deforme, la recorta prolijamente */
+            object-position: center;
+            /* Centra el logo/imagen en el recuadro */
             display: block;
             border-bottom: 2px solid #333;
         }
 
         .gif-card iframe {
             width: 100%;
-            height: auto;
+            height: 160px;
             display: block;
             border-bottom: 2px solid #333;
         }
@@ -441,13 +446,13 @@
             <span class="group-label">Game Engines</span>
             <div class="tech-icons">
                 <img src="images/unreal_engine.png" alt="Unreal Engine" title="Unreal Engine">
-                <img src="images/unity.png" alt="Unity" title="Unity">                
+                <img src="images/unity.png" alt="Unity" title="Unity">
             </div>
         </div>
 
         <div class="tech-group">
             <span class="group-label">Design Tools</span>
-            <div class="tech-icons">                
+            <div class="tech-icons">
                 <img src="images/blender.png" alt="Blender" title="Blender">
                 <img src="images/photoshop.png" alt="Adobe Photoshop" title="Adobe Photoshop">
                 <img src="images/premiere.png" alt="Adobe Premiere" title="Adobe Premiere">
@@ -478,7 +483,7 @@
             <span class="group-label">Tools & OS</span>
             <div class="tech-icons">
                 <img src="images/visual_studio.png" alt="Visual Studio" title="Visual Studio">
-                <img src="images/rider.png" alt="Rider" title="Rider">                
+                <img src="images/rider.png" alt="Rider" title="Rider">
                 <img src="images/windows.png" alt="Windows" title="Windows">
                 <img src="images/linux.png" alt="Linux" title="Linux">
             </div>

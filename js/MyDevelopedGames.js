@@ -1,5 +1,5 @@
-export const myprojects = {
-    title: 'MY PROJECTS',
+export const mydevelopedgames = {
+    title: 'MY DEVELPED GAMES',
     gifs: [
         {
             file: '',
