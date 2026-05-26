@@ -50,7 +50,6 @@
             border: 2px solid #a78bfa;
             object-fit: cover;
             transition: transform 0.3s ease-in-out;
-
         }
 
         .title-logo:hover {
@@ -73,16 +72,13 @@
             position: absolute;
             right: 100%;
             margin-right: 20px;
-
             color: #a78bfa;
             font-weight: 500;
             font-size: 1rem;
             white-space: nowrap;
-
             opacity: 0;
             top: 50%;
             transform: translateY(-30%) translateX(15px);
-
             transition: opacity 0.4s ease-out, transform 0.4s ease-out;
         }
 
@@ -127,7 +123,6 @@
 
         .section-title {
             color: #a78bfa;
-            /* Violeta */
             font-size: 1.8em;
             padding-bottom: 10px;
             border-bottom: 2px solid #555;
@@ -154,7 +149,7 @@
         }
 
         .gif-card:hover {
-            transform: scale(1.1);
+            transform: scale(1.03);
             border-color: #a78bfa;
         }
 
@@ -165,11 +160,8 @@
         .gif-card img {
             width: 100%;
             height: 160px;
-            /* Fijamos una altura máxima para la imagen */
             object-fit: cover;
-            /* Evita que la imagen se deforme, la recorta prolijamente */
             object-position: center;
-            /* Centra el logo/imagen en el recuadro */
             display: block;
             border-bottom: 2px solid #333;
         }
@@ -178,13 +170,9 @@
             width: 100%;
             height: 160px;
             display: block;
-            border-bottom: 2px solid #333;
-        }
-
-        .gif-card iframe {
-            aspect-ratio: 16 / 9;
             border: none;
             border-bottom: 2px solid #333;
+            aspect-ratio: 16 / 9;
         }
 
         .gif-card h3 {
@@ -219,13 +207,35 @@
             font-size: 1.2rem;
             cursor: pointer;
             padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #a78bfa;
+            color: #a78bfa;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-btn:hover {
+            background: #a78bfa;
+            color: #181818;
         }
 
         .card-description {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-out;
-
             color: #ccc;
             font-size: 0.9em;
             text-align: left;
@@ -255,10 +265,6 @@
             background-color: #a78bfa;
             border-radius: 10px;
             border: 2px solid #222;
-        }
-
-        .card-description::-webkit-scrollbar-thumb:hover {
-            background-color: #a78bfa;
         }
 
         footer {
@@ -296,19 +302,10 @@
             font-size: 1.2em;
         }
 
-        .github {
+        .github, .linkedin, .email {
             background-color: #a78bfa;
         }
 
-        .linkedin {
-            background-color: #a78bfa;
-        }
-
-        .email {
-            background-color: #a78bfa;
-        }
-
-        /* Nuevo contenedor principal */
         .tech-categories {
             display: flex;
             flex-direction: column;
@@ -319,7 +316,6 @@
             max-width: 900px;
         }
 
-        /* Cada bloque de categoría */
         .tech-group {
             display: flex;
             flex-direction: column;
@@ -327,7 +323,6 @@
             width: 100%;
         }
 
-        /* Etiqueta de la categoría */
         .group-label {
             color: #a78bfa;
             font-size: 0.85rem;
@@ -338,7 +333,6 @@
             opacity: 0.8;
         }
 
-        /* Contenedor de los iconos dentro del grupo */
         .tech-icons {
             display: flex;
             flex-wrap: wrap;
@@ -346,10 +340,8 @@
             gap: 15px;
         }
 
-        /* Estilo de los iconos (mantenemos tu estética) */
         .tech-icons img {
             width: 50px;
-            /* Un poco más pequeños para que el grupo no sea gigante */
             height: 50px;
             border-radius: 50%;
             border: 2px solid #a78bfa;
@@ -363,7 +355,6 @@
             transform: scale(1.15);
         }
 
-        /* Media query para que en desktop los grupos se vean en filas si quieres */
         @media (min-width: 768px) {
             .tech-categories {
                 flex-direction: row;
@@ -374,25 +365,7 @@
 
             .tech-group {
                 width: calc(50% - 30px);
-                /* Dos grupos por fila en tablets/laptops */
             }
-        }
-
-        .tech-icons-container img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 3px solid #a78bfa;
-            object-fit: cover;
-            padding: 2px;
-            background-color: #222;
-            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
-            flex-shrink: 0;
-        }
-
-        .tech-icons-container img:hover {
-            transform: scale(1.1);
-            border-color: #a78bfa;
         }
 
         .card-description ul {
@@ -425,6 +398,136 @@
             min-width: 140px;
             flex-shrink: 0;
             margin-right: 5px;
+        }
+
+        /* =========================================
+           ESTILOS DEL MODAL (PANTALLA COMPLETA)
+           ========================================= */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #222;
+            border: 2px solid #a78bfa;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #444;
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: #a78bfa;
+            color: #181818;
+            transform: scale(1.1);
+        }
+
+        .modal-media {
+            width: 100%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #333;
+        }
+
+        .modal-media img, .modal-media iframe {
+            width: 100%;
+            max-height: 50vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-media iframe {
+            aspect-ratio: 16/9;
+            height: auto;
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .modal-body h3 {
+            color: #a78bfa;
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+        }
+
+        .modal-desc {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .modal-action-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #a78bfa;
+            color: #181818;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .modal-action-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -494,9 +597,21 @@
 
     <main class="portfolio-main-content" id="portfolio-main"></main>
 
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-media-container" class="modal-media"></div>
+            <div class="modal-body">
+                <h3 id="modal-title"></h3>
+                <div id="modal-description" class="modal-desc"></div>
+                <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="modal-action-btn">
+                    Info <i class="fa-solid fa-external-link-alt" style="margin-left: 5px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script type="module">
-
         const BIRTH_DATE = '1998-12-08';
         const WORK_START_DATE = '2018-01-01';
 
@@ -532,7 +647,7 @@
         });
 
         const hoverSound = new Audio('sounds/hover.wav');
-        hoverSound.volume = 0.5;
+        hoverSound.volume = 0.2; // Ajustado a 0.2 de volumen por comodidad técnico-auditiva
 
         import { allPortfolioItems } from './js/index.js';
 
@@ -542,7 +657,6 @@
         const mainContainer = document.getElementById('portfolio-main');
 
         portfolioData.forEach(section => {
-            // Genera un ID único para la sección a partir de su título (ej: "Animaciones 2D" -> "animaciones-2d")
             const sectionId = section.title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '');
 
             // 1. CREAR BOTÓN DE NAVEGACIÓN
@@ -563,14 +677,13 @@
             titleElement.textContent = section.title;
             sectionElement.appendChild(titleElement);
 
-            // 4. CREAR LA CUADRÍCULA PARA LOS GIFS DE ESTA SECCIÓN
+            // 4. CREAR LA CUADRÍCULA
             const gridElement = document.createElement('div');
             gridElement.classList.add('gif-grid');
 
             section.gifs.forEach(gifData => {
                 const card = document.createElement('a');
                 card.classList.add('gif-card');
-
                 card.href = gifData.link;
 
                 if (gifData.link && gifData.link !== '#') {
@@ -578,14 +691,12 @@
                     card.rel = 'noopener noreferrer';
                     card.addEventListener('mouseover', () => {
                         hoverSound.currentTime = 0;
+                        hoverSound.play().catch(() => {}); // Previene errores de autoplay policy de navegadores
                     });
-                }
-                else {
+                } else {
                     card.addEventListener('click', (event) => {
                         event.preventDefault();
                     });
-
-                    // Opcional: Quitar el estilo de "enlace" si no hay link
                     card.style.cursor = 'default';
                 }
 
@@ -608,23 +719,38 @@
 
                 const title = document.createElement('h3');
                 title.textContent = gifData.title;
-
                 titleArea.appendChild(title);
 
-                // --- LÓGICA PARA AÑADIR BOTÓN Y DESCRIPCIÓN ---
+                // Contenedor de acciones agrupadas a la derecha del título de la tarjeta
+                const buttonsContainer = document.createElement('div');
+                buttonsContainer.style.display = 'flex';
+                buttonsContainer.style.alignItems = 'center';
+                buttonsContainer.style.gap = '5px';
+
+                // Botón de ver en pantalla completa (Modal)
+                const fullscreenBtn = document.createElement('button');
+                fullscreenBtn.classList.add('fullscreen-btn');
+                fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+                fullscreenBtn.title = "Ver en pantalla completa";
+                
+                fullscreenBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    openModal(gifData);
+                });
+
+                // --- LÓGICA PARA AÑADIR BOTÓN Y DESCRIPCIÓN DINÁMICA ---
                 if (gifData.description) {
                     const button = document.createElement('button');
                     button.classList.add('toggle-description-btn');
                     const icon = document.createElement('i');
-                    icon.classList.add('fa-solid', 'fa-plus'); // Icono inicial
+                    icon.classList.add('fa-solid', 'fa-plus');
                     button.appendChild(icon);
 
                     const description = document.createElement('p');
                     description.classList.add('card-description');
                     description.innerHTML = gifData.description;
 
-
-                    // Funciones de ayuda para no repetir código
                     const openDescription = () => {
                         description.classList.add('show');
                         icon.classList.remove('fa-plus');
@@ -637,10 +763,7 @@
                         icon.classList.add('fa-plus');
                     };
 
-                    // Evento para abrir con el hover
                     card.addEventListener('mouseenter', openDescription);
-
-                    // Evento para cerrar al quitar el hover (si no está fijado)
                     card.addEventListener('mouseleave', () => {
                         if (!card.classList.contains('is-pinned')) {
                             closeDescription();
@@ -648,29 +771,23 @@
                     });
 
                     button.addEventListener('click', (event) => {
-                        // Previene que al hacer clic en el botón, se active el enlace de la tarjeta
                         event.preventDefault();
                         event.stopPropagation();
-
-                        // Alterna el estado 'fijado' en la tarjeta
                         card.classList.toggle('is-pinned');
-
-                        // Si acabamos de fijarlo, nos aseguramos de que esté abierto
                         if (card.classList.contains('is-pinned')) {
                             openDescription();
                         }
                     });
 
-                    titleArea.appendChild(button);
-                    card.appendChild(mediaElement);
-                    card.appendChild(titleArea);
+                    buttonsContainer.appendChild(button);
                     card.appendChild(description);
-                } else {
-                    // Si no hay descripción, se mantiene la estructura simple
-                    card.appendChild(mediaElement);
-                    card.appendChild(titleArea);
                 }
 
+                buttonsContainer.appendChild(fullscreenBtn);
+                titleArea.appendChild(buttonsContainer);
+
+                card.appendChild(mediaElement);
+                card.appendChild(titleArea);
                 gridElement.appendChild(card);
             });
 
@@ -683,6 +800,71 @@
         contactButton.href = '#contact';
         contactButton.textContent = 'CONTACT';
         navContainer.appendChild(contactButton);
+
+        // ==========================================
+        // LÓGICA DEL MODAL DE PANTALLA COMPLETA
+        // ==========================================
+        const modalOverlay = document.getElementById('project-modal');
+        const modalMediaContainer = document.getElementById('modal-media-container');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalLink = document.getElementById('modal-link');
+        const closeBtn = document.getElementById('close-modal-btn');
+
+        function openModal(data) {
+            modalMediaContainer.innerHTML = '';
+            
+            if (data.youtubeId) {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/${data.youtubeId}?autoplay=1`;
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', '');
+                modalMediaContainer.appendChild(iframe);
+            } else {
+                const img = document.createElement('img');
+                img.src = 'gifs/' + data.file;
+                img.alt = data.title;
+                modalMediaContainer.appendChild(img);
+            }
+
+            modalTitle.textContent = data.title;
+            
+            if (data.description) {
+                modalDescription.innerHTML = data.description;
+                modalDescription.style.display = 'block';
+            } else {
+                modalDescription.style.display = 'none';
+            }
+
+            if (data.link && data.link !== '#') {
+                modalLink.href = data.link;
+                modalLink.style.display = 'inline-flex';
+            } else {
+                modalLink.style.display = 'none';
+            }
+
+            modalOverlay.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { modalMediaContainer.innerHTML = ''; }, 300); 
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
+                closeModal();
+            }
+        });
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -691,7 +873,6 @@
 
     <footer id="contact">
         <div class="social-links">
-
             <a href="https://github.com/Gabriel98pc" target="_blank" rel="noopener noreferrer"
                 class="social-button github">
                 <i class="fab fa-github"></i> Github
