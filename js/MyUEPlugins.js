@@ -1,23 +1,34 @@
 export const myueplugins = {
     title: 'UNREAL ENGINE PLUGINS',
     gifs: [
-    {
-        file: 'TickableObjects.jpg',
-        youtubeId: '',
-        title: 'Tickable Latent Objects',
-        link: 'https://www.fab.com/listings/2515f362-2b07-4d5c-8b0f-8ccd48136e02',
-        description: `
+        {
+            file: 'SeamlessLobbySolution.png',
+            youtubeId: '',
+            title: 'Seamless Lobby Solution',
+            link: 'https://www.youtube.com/watch?v=halclnxtLjU',
+            description: `
+        <p>
+            Seamless Lobby Solution is a plugin that contains a lobby system template with a tool that copies the entire template to your project with a single click, allowing you to customize it to your liking. It's 100% customizable and adapts to any configuration in your project.
+        </p>        
+        `
+        },
+        {
+            file: 'TickableObjects.jpg',
+            youtubeId: '',
+            title: 'Tickable Latent Objects',
+            link: 'https://www.fab.com/listings/2515f362-2b07-4d5c-8b0f-8ccd48136e02',
+            description: `
         <p>
             This plugin provides you a new object type to use with blueprints, where you can use latent nodes like “Delay”.
         </p>        
         `
-    },
-    {
-        file: 'SplineRibbonPlugin.jpg',
-        youtubeId: '',
-        title: 'Spline Ribbon Plugin',
-        link: 'https://www.fab.com/listings/9a4b749d-e2a8-43b1-9d65-b6554642700e',
-        description: `
+        },
+        {
+            file: 'SplineRibbonPlugin.jpg',
+            youtubeId: '',
+            title: 'Spline Ribbon Plugin',
+            link: 'https://www.fab.com/listings/9a4b749d-e2a8-43b1-9d65-b6554642700e',
+            description: `
         <p>
             Elevate your visuals with <b>Procedural Spline Ribbon</b>, a powerful and flexible tool for Unreal Engine 5. 
             Built entirely in C++, this plugin allows developers and artists to generate complex, dynamic ribbon meshes along any spline path with maximum performance and control.
@@ -36,13 +47,13 @@ export const myueplugins = {
         </ul>
         <em>A tool-focused project designed to create a powerful, flexible, and production-ready visual effects system in Unreal Engine.</em>
         `
-    },
-    {
-        file: 'ActorFunctionTriggerPlugin.jpg',
-        youtubeId: '',
-        title: 'Actor Function Trigger Plugin',
-        link: 'https://www.fab.com/listings/c0e68a71-6eec-4c65-b4f6-b17e28dd0906',
-        description: `
+        },
+        {
+            file: 'ActorFunctionTriggerPlugin.jpg',
+            youtubeId: '',
+            title: 'Actor Function Trigger Plugin',
+            link: 'https://www.fab.com/listings/c0e68a71-6eec-4c65-b4f6-b17e28dd0906',
+            description: `
         <p>
             Accelerate your workflow with <b>Actor Action Panel</b>, a powerful and intuitive editor utility for Unreal Engine 5. Developed entirely in C++, this plugin introduces a new editor panel designed to streamline actor management and interaction in real-time.
         </p>
@@ -60,6 +71,6 @@ export const myueplugins = {
         </ul>
         <em>An editor-focused utility designed to boost productivity and simplify the management of complex scenes in Unreal Engine.</em>
         `
-    }
+        }
     ]
 };
