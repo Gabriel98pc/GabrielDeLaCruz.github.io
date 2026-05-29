@@ -5,7 +5,7 @@ export const myueplugins = {
             file: 'SeamlessLobbySolution.png',
             youtubeId: '',
             title: 'Seamless Lobby Solution',
-            link: 'https://www.youtube.com/watch?v=halclnxtLjU',
+            link: 'https://www.fab.com/listings/a18a69c5-af58-41b4-9f07-e51f4ebf2a59',
             description: `
         <p>
             Seamless Lobby Solution is a plugin that contains a lobby system template with a tool that copies the entire template to your project with a single click, allowing you to customize it to your liking. It's 100% customizable and adapts to any configuration in your project.
