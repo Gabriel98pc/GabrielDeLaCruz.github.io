@@ -1,6 +1,18 @@
 export const myunrealenginework = {
     title: 'UNREAL ENGINE',
     gifs: [
+        ,
+        {
+            file: '',
+            youtubeId: 'iFKCgmnUhGU',
+            title: 'Replicated Character Hit Reaction',
+            link: '#',
+            description: `
+                <p>
+                    Replicated Character Hit Reaction using animations database and 100% blueprints.
+                </p>
+            `
+        },
         {
             file: '',
             youtubeId: 'R15fzzR7OJE',
