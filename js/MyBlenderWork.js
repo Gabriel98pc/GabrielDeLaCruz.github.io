@@ -2,6 +2,12 @@ export const myblenderwork = {
     title: 'BLENDER',
     gifs: [
         {
+            file: 'Blender_Fluids_01.gif.gif',
+            title: 'Blender - Fluid Simulation - 01',            
+            link: '#',
+            description: 'One of my first fluid simulations in Blender.'
+        },
+        {
             file: 'Blender-StylizedShark.gif',
             title: 'Blender - Stylized Shark Rigg & Animation',            
             link: 'https://www.youtube.com/watch?v=M_m3-0P70bs',
