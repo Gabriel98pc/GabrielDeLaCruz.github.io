@@ -2,7 +2,7 @@ export const myblenderwork = {
     title: 'BLENDER',
     gifs: [
         {
-            file: 'Blender_Fluids_01.gif.gif',
+            file: 'Blender_Fluids_01.gif',
             title: 'Blender - Fluid Simulation - 01',            
             link: '#',
             description: 'One of my first fluid simulations in Blender.'
