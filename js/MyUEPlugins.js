@@ -2,6 +2,17 @@ export const myueplugins = {
     title: 'UNREAL ENGINE PLUGINS',
     gifs: [
         {
+            file: 'CrossFlowUI.png',
+            youtubeId: '',
+            title: 'CrossFlow UI',
+            link: 'https://www.fab.com/listings/43f39283-6adf-455c-be8a-16c7025afab7',
+            description: `
+        <p>
+            Elevate your project's interface with a silky-smooth, PlayStation XMB-style dual-axis navigation system. Built on a blazing-fast C++ core and fully exposed to Blueprints, CrossFlow UI delivers flawless infinite scrolling, dynamic Z-ordering, and race-condition-free inputs for a truly AAA user experience.
+        </p>        
+        `
+        },
+        {
             file: 'SeamlessLobbySolution.png',
             youtubeId: '',
             title: 'Seamless Lobby Solution',
