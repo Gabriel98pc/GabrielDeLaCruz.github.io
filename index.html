@@ -12,7 +12,6 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #181818;
             color: #e0e0e0;
             margin: 0;
             padding: 40px 20px;
@@ -21,6 +20,89 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
+        }
+
+        /* =========================================
+           FONDO ANIMADO (AURORA VIOLETA)
+           ========================================= */
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #181818;
+            pointer-events: none;
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            will-change: transform;
+        }
+
+        .aurora-blob.blob-1 {
+            width: 55vw;
+            height: 55vw;
+            top: -15%;
+            left: -12%;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.9) 0%, rgba(167, 139, 250, 0) 70%);
+            animation: auroraDrift1 26s ease-in-out infinite alternate;
+        }
+
+        .aurora-blob.blob-2 {
+            width: 48vw;
+            height: 48vw;
+            bottom: -18%;
+            right: -12%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.85) 0%, rgba(139, 92, 246, 0) 70%);
+            animation: auroraDrift2 32s ease-in-out infinite alternate;
+        }
+
+        .aurora-blob.blob-3 {
+            width: 36vw;
+            height: 36vw;
+            top: 38%;
+            left: 42%;
+            background: radial-gradient(circle, rgba(196, 181, 253, 0.7) 0%, rgba(196, 181, 253, 0) 70%);
+            animation: auroraDrift3 22s ease-in-out infinite alternate;
+        }
+
+        @keyframes auroraDrift1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(8vw, 10vh) scale(1.15);
+            }
+        }
+
+        @keyframes auroraDrift2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(-9vw, -7vh) scale(1.1);
+            }
+        }
+
+        @keyframes auroraDrift3 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(-6vw, 8vh) scale(0.9);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .aurora-blob {
+                animation: none;
+            }
         }
 
         .main-title {
@@ -112,6 +194,19 @@
             transform: translateY(-2px);
         }
 
+        .resume-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #a78bfa;
+            color: #181818;
+        }
+
+        .resume-button:hover {
+            background-color: #c4b5fd;
+            border-color: #c4b5fd;
+        }
+
         .portfolio-main-content {
             width: 90%;
             max-width: 1200px;
@@ -157,7 +252,8 @@
             cursor: default;
         }
 
-        .gif-card img {
+        .gif-card img,
+        .gif-card video {
             width: 100%;
             height: 160px;
             object-fit: cover;
@@ -310,19 +406,20 @@
 
         .tech-categories {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 35px 55px;
             margin-bottom: 50px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
         }
 
         .tech-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
         }
 
         .group-label {
@@ -355,19 +452,6 @@
 
         .tech-icons img:hover {
             transform: scale(1.15);
-        }
-
-        @media (min-width: 768px) {
-            .tech-categories {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: flex-start;
-            }
-
-            .tech-group {
-                width: calc(50% - 30px);
-            }
         }
 
         .card-description ul {
@@ -482,6 +566,7 @@
         }
 
         .modal-media img,
+        .modal-media video,
         .modal-media iframe {
             width: 100%;
             max-height: 50vh;
@@ -536,6 +621,12 @@
 </head>
 
 <body>
+
+    <div class="aurora-bg" aria-hidden="true">
+        <span class="aurora-blob blob-1"></span>
+        <span class="aurora-blob blob-2"></span>
+        <span class="aurora-blob blob-3"></span>
+    </div>
 
     <div class="title-container">
         <span id="info-text" class="info-text"></span>
@@ -652,6 +743,22 @@
         const hoverSound = new Audio('sounds/hover.wav');
         hoverSound.volume = 0.2; // Ajustado a 0.2 de volumen por comodidad técnico-auditiva
 
+        // Los gifs pesados se sirven como mp4 (mismo look, fracción del peso).
+        // Este observer difiere la carga/reproducción hasta que la tarjeta entra en viewport.
+        const lazyVideoObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    if (!video.src && video.dataset.src) {
+                        video.src = video.dataset.src;
+                    }
+                    video.play().catch(() => { });
+                } else {
+                    video.pause();
+                }
+            });
+        }, { rootMargin: '200px' });
+
         import { allPortfolioItems } from './js/index.js';
 
         const portfolioData = allPortfolioItems;
@@ -708,13 +815,23 @@
                 let mediaElement;
                 if (gifData.youtubeId) {
                     mediaElement = document.createElement('iframe');
+                    mediaElement.loading = 'lazy';
                     mediaElement.src = `https://www.youtube.com/embed/${gifData.youtubeId}`;
                     mediaElement.title = gifData.title;
                     mediaElement.setAttribute('frameborder', '0');
                     mediaElement.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
                     mediaElement.setAttribute('allowfullscreen', '');
+                } else if (gifData.file.toLowerCase().endsWith('.mp4')) {
+                    mediaElement = document.createElement('video');
+                    mediaElement.dataset.src = 'gifs/' + gifData.file;
+                    mediaElement.muted = true;
+                    mediaElement.loop = true;
+                    mediaElement.playsInline = true;
+                    mediaElement.setAttribute('aria-label', gifData.title);
+                    lazyVideoObserver.observe(mediaElement);
                 } else {
                     mediaElement = document.createElement('img');
+                    mediaElement.loading = 'lazy';
                     mediaElement.src = 'gifs/' + gifData.file;
                     mediaElement.alt = gifData.title;
                 }
@@ -812,6 +929,13 @@
         contactButton.textContent = 'CONTACT';
         navContainer.appendChild(contactButton);
 
+        const resumeButton = document.createElement('a');
+        resumeButton.classList.add('nav-button', 'resume-button');
+        resumeButton.href = 'resume/Gabriel_De_La_Cruz_Resume_EN.pdf';
+        resumeButton.setAttribute('download', '');
+        resumeButton.innerHTML = '<i class="fa-solid fa-download"></i> Resume';
+        navContainer.appendChild(resumeButton);
+
         // ==========================================
         // LÓGICA DEL MODAL DE PANTALLA COMPLETA
         // ==========================================
@@ -832,6 +956,14 @@
                 iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
                 iframe.setAttribute('allowfullscreen', '');
                 modalMediaContainer.appendChild(iframe);
+            } else if (data.file.toLowerCase().endsWith('.mp4')) {
+                const video = document.createElement('video');
+                video.src = 'gifs/' + data.file;
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
+                video.playsInline = true;
+                modalMediaContainer.appendChild(video);
             } else {
                 const img = document.createElement('img');
                 img.src = 'gifs/' + data.file;

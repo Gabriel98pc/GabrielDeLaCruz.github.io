@@ -2,6 +2,17 @@ export const myueplugins = {
     title: 'UNREAL ENGINE PLUGINS',
     gifs: [
         {
+            file: 'AnimBlendToolsPro.jpg',
+            youtubeId: '',
+            title: 'Anim Blend Tools Pro',
+            link: 'https://www.fab.com/listings/59b1ac14-b381-4533-b8a9-0deb82fbbe6e',
+            description: `
+        <p>
+            The ultimate 10-in-1 DCC-style batch editor for Unreal Engine animators. Blend, layer, retime, and simulate physics directly in the editor with zero runtime cost.
+        </p>        
+        `
+        },
+        {
             file: 'CrossFlowUI.png',
             youtubeId: '',
             title: 'CrossFlow UI',

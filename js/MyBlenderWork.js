@@ -2,7 +2,7 @@ export const myblenderwork = {
     title: 'BLENDER',
     gifs: [
         {
-            file: 'Blender_Fluids_01.gif',
+            file: 'Blender_Fluids_01.mp4',
             title: 'Blender - Fluid Simulation - 01',            
             link: '#',
             description: 'One of my first fluid simulations in Blender.'
@@ -14,7 +14,7 @@ export const myblenderwork = {
             description: 'I rigged and animated this 3D model of a stylized shark; the model itself wasnt made by me, only the rig and animation.'
         },
         {
-            file: 'Blender_DocOcTest.gif',
+            file: 'Blender_DocOcTest.mp4',
             title: 'Blender - Doctor Octopus Arms Rigg',            
             link: '',
             description: 'I made the rigging for these arms, inspired by the metal arms of Doc Ock from Spider-Man.'

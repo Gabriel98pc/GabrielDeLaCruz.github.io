@@ -53,7 +53,7 @@ export const mydevelopedgames = {
             description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
         },
         {
-            file: 'Rick&MortyFanGame.gif',
+            file: 'Rick&MortyFanGame.mp4',
             title: 'Rick&Morty Fan Made',
             link: 'https://www.youtube.com/watch?v=GJvP1yRjIBg',
             description: 'It is a game developed by hobbie, made in unreal engine, with c++ and blueprints.'
