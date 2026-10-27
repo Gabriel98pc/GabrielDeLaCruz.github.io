@@ -1,5 +1,6 @@
 
 import { contributions } from './MyContributions.js';
+import { vscodecursor } from './VsCodeExtensions.js';
 import { myueplugins } from './MyUEPlugins.js';
 import { myunrealenginework } from './MyUnrealEngineWork.js';
 import { myblenderwork } from './MyBlenderWork.js';
@@ -10,4 +11,4 @@ import { myexperience } from './MyExperience.js';
 
 
 
-export const allPortfolioItems = [contributions, myueplugins, myunrealenginework, myblenderwork, mydevelopedgames, mysaas, freelancework, myexperience];
+export const allPortfolioItems = [contributions, vscodecursor, myueplugins, myunrealenginework, myblenderwork, mydevelopedgames, mysaas, freelancework, myexperience];
